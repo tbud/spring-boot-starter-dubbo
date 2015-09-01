@@ -1,21 +1,28 @@
-package io.tbud.spring.boot.starter.dubbo;
+package io.tbud.boot.autoconfigure.dubbo;
 
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.ProviderConfig;
 import com.alibaba.dubbo.config.RegistryConfig;
 import com.alibaba.dubbo.config.spring.AnnotationBean;
-import lombok.Data;
+import com.alibaba.dubbo.rpc.Exporter;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import javax.annotation.PostConstruct;
 
 /**
  * Created by mind on 9/1/15.
  */
+@Slf4j
 @Configuration
-public class DubboConfig {
+@ConditionalOnClass(Exporter.class)
+@EnableConfigurationProperties({DubboAnnotation.class, DubboApplication.class, DubboProtocol.class, DubboRegistry.class, DubboProvider.class})
+public class DubboAutoConfiguration {
 
     @Autowired
     private DubboAnnotation dubboAnnotation;
@@ -32,6 +39,11 @@ public class DubboConfig {
     @Autowired
     private DubboRegistry dubboRegistry;
 
+    @PostConstruct
+    public void init() {
+        annotationBean();
+    }
+
 
     /**
      * 设置Application信息
@@ -40,6 +52,7 @@ public class DubboConfig {
      */
     @Bean
     public ApplicationConfig applicationConfig() {
+        log.debug("ApplicationConfig:{}", dubboApplication);
         ApplicationConfig applicationConfig = new ApplicationConfig();
 
         applicationConfig.setName(dubboApplication.getName());
@@ -48,10 +61,10 @@ public class DubboConfig {
         return applicationConfig;
     }
 
-    @Bean
     public AnnotationBean annotationBean() {
-        AnnotationBean annotationBean = new AnnotationBean();
+        log.debug("AnnotationBean:{}", dubboAnnotation);
 
+        AnnotationBean annotationBean = new AnnotationBean();
         annotationBean.setPackage(dubboAnnotation.getPackageName());
 
         return annotationBean;
@@ -59,6 +72,7 @@ public class DubboConfig {
 
     @Bean
     public ProtocolConfig protocolConfig() {
+        log.debug("ProtocolConfig:{}", dubboProtocol);
         ProtocolConfig protocolConfig = new ProtocolConfig();
 
         protocolConfig.setName(dubboProtocol.getName());
@@ -72,6 +86,7 @@ public class DubboConfig {
     public ProviderConfig providerConfig(ApplicationConfig applicationConfig,
                                          RegistryConfig registryConfig,
                                          ProtocolConfig protocolConfig) {
+        log.debug("ProviderConfig:{}", dubboProvider);
         ProviderConfig providerConfig = new ProviderConfig();
 
         providerConfig.setTimeout(dubboProvider.getTimeout());
@@ -88,6 +103,7 @@ public class DubboConfig {
 
     @Bean
     public RegistryConfig registryConfig() {
+        log.debug("RegistryConfig:{}", dubboRegistry);
         RegistryConfig registryConfig = new RegistryConfig();
 
         registryConfig.setProtocol(dubboRegistry.getProtocol());
