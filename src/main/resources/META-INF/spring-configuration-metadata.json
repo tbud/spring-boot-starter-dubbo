@@ -1,0 +1,35 @@
+{
+  "groups": [
+    {
+      "name": "dubbo.annotation",
+      "type": "io.tbud.boot.autoconfigure.dubbo.DubboAnnotation",
+      "sourceType": "io.tbud.boot.autoconfigure.dubbo.DubboAnnotation"
+    },
+    {
+      "name": "dubbo.annotation.package",
+      "type": "java.lang.String",
+      "description": "包扫描配置",
+      "sourceType": "io.tbud.boot.autoconfigure.dubbo.DubboAnnotation"
+    },
+    {
+      "name": "dubbo.application",
+      "type": "io.tbud.boot.autoconfigure.dubbo.DubboApplication",
+      "sourceType": "io.tbud.boot.autoconfigure.dubbo.DubboApplication"
+    },
+    {
+      "name": "dubbo.protocal",
+      "type": "io.tbud.boot.autoconfigure.dubbo.DubboProtocol",
+      "sourceType": "io.tbud.boot.autoconfigure.dubbo.DubboProtocol"
+    },
+    {
+      "name": "dubbo.provider",
+      "type": "io.tbud.boot.autoconfigure.dubbo.DubboProvider",
+      "sourceType": "io.tbud.boot.autoconfigure.dubbo.DubboProvider"
+    },
+    {
+      "name": "dubbo.registry",
+      "type": "io.tbud.boot.autoconfigure.dubbo.DubboRegistry",
+      "sourceType": "io.tbud.boot.autoconfigure.dubbo.DubboRegistry"
+    }
+  ]
+}
