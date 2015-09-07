@@ -1,2 +1,2 @@
 # Auto Configure
-org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.tbud.boot.autoconfigure.dubbo.DubboAutoConfiguration
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=io.tbud.boot.dubbo.autoconfigure.DubboAutoConfiguration
