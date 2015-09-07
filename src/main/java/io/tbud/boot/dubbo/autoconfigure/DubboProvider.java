@@ -23,7 +23,7 @@ public class DubboProvider {
     /**
      * 过滤器
      */
-    private String filter;
+    private String filter = "providerInterfaceLogFilter";
 
     /**
      * 是否延迟暴露,-1表示不延迟暴露
