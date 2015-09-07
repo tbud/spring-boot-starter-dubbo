@@ -1,4 +1,4 @@
-package io.tbud.boot.filter.dubbo;
+package io.tbud.boot.dubbo.filter;
 
 import com.alibaba.dubbo.rpc.*;
 import org.slf4j.Logger;

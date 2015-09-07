@@ -1,4 +1,4 @@
-package io.tbud.boot.autoconfigure.dubbo;
+package io.tbud.boot.dubbo.autoconfigure;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

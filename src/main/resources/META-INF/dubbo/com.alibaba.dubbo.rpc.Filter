@@ -1,1 +1,1 @@
-providerInterfaceLogFilter=io.tbud.boot.filter.dubbo.ProviderInterfaceLogFilter
+providerInterfaceLogFilter=io.tbud.boot.dubbo.filter.ProviderInterfaceLogFilter
