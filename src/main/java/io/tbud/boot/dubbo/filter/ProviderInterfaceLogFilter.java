@@ -50,6 +50,7 @@ public class ProviderInterfaceLogFilter implements Filter {
             }
         } catch (Exception e) {
             exception = e;
+            throw e;
         } finally {
             interfaceLog.setCostTime(System.currentTimeMillis() - startTimeMills);
             if (exception != null) {
