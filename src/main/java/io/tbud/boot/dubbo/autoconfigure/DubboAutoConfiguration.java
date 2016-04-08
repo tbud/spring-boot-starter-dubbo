@@ -36,7 +36,7 @@ public class DubboAutoConfiguration {
     private DubboRegistry dubboRegistry;
 
     @Bean
-    public static AnnotationBean annotationBean(@Value("${dubbo.annotation.package}") String packageName) {
+    public static AnnotationBean annotationBean(@Value("${dubbo.annotation.package-name}") String packageName) {
         log.debug("AnnotationBean:{}", packageName);
 
         AnnotationBean annotationBean = new AnnotationBean();
