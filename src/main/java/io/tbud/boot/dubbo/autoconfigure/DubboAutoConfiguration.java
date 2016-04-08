@@ -1,5 +1,6 @@
 package io.tbud.boot.dubbo.autoconfigure;
 
+import com.alibaba.dubbo.common.utils.StringUtils;
 import com.alibaba.dubbo.config.ApplicationConfig;
 import com.alibaba.dubbo.config.ProtocolConfig;
 import com.alibaba.dubbo.config.ProviderConfig;
@@ -38,6 +39,10 @@ public class DubboAutoConfiguration {
     @Bean
     public static AnnotationBean annotationBean(@Value("${dubbo.annotation.package-name}") String packageName) {
         log.debug("AnnotationBean:{}", packageName);
+
+        if (StringUtils.isBlank(packageName)) {
+            throw new RuntimeException("annotation package is null");
+        }
 
         AnnotationBean annotationBean = new AnnotationBean();
         annotationBean.setPackage(packageName);
