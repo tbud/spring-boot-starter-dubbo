@@ -53,6 +53,9 @@ public class DubboAutoConfiguration {
     @Bean
     public ApplicationConfig applicationConfig() {
         log.debug("ApplicationConfig:{}", dubboApplication);
+        if (StringUtils.isBlank(dubboApplication.getName())) {
+            throw new RuntimeException("application name is null");
+        }
 
         ApplicationConfig applicationConfig = new ApplicationConfig();
 
