@@ -18,5 +18,5 @@
 # 项目名称设置，必须
 dubbo.application.name=application_name_XXX
 # 包扫描设置，必须
-dubbo.annotation.package=XXX.XXX.XXX
+dubbo.annotation.package-name=XXX.XXX.XXX
 ```
